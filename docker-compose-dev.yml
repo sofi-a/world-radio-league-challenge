@@ -1,0 +1,18 @@
+services:
+  db:
+    extends:
+      file: docker-compose.yml
+      service: db
+
+  app:
+    extends:
+      file: docker-compose.yml
+      service: app
+    volumes:
+      - .:/app
+      # Prevent host's node_modules from overriding container's node_modules,
+      # which could cause compatibility issues between host and container environments.
+      - /app/node_modules
+
+volumes:
+  pg_data:

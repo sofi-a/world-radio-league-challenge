@@ -11,7 +11,7 @@ To run the project using Docker Compose, follow these steps:
 3. **Development setup:**  
   Start the development services using:
   ```bash
-  docker compose -f docker-compose.yml up
+  docker compose -f docker-compose-dev.yml up
   ```
 
 4. **Production setup:**  
