@@ -1,0 +1,16 @@
+services:
+  db:
+    extends:
+      file: docker-compose.yml
+      service: db
+
+  app:
+    extends:
+      file: docker-compose.yml
+      service: app
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+volumes:
+  pg_data:

@@ -23,6 +23,3 @@ services:
       - ${PORT:-3000}:${PORT:-3000}
     depends_on:
       - db
-
-volumes:
-  pg_data:
