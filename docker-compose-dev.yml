@@ -10,6 +10,8 @@ services:
       service: app
     volumes:
       - .:/app
+      # Prevent host's node_modules from overriding container's node_modules,
+      # which could cause compatibility issues between host and container environments.
       - /app/node_modules
 
 volumes:
