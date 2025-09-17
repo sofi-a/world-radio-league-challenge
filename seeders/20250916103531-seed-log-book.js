@@ -18,7 +18,7 @@ function mapBatchToRows(batch) {
     const timestamp = doc.timestamp ? new Date(doc.timestamp._seconds * 1000) : null;
     return {
       id: doc.id,
-      name: doc.name,
+      name: doc.name || null,
       defaultCallSign: doc.defaultCallSign || null,
       coordinates: doc.coordinates ? JSON.stringify(doc.coordinates) : null,
       timestamp: timestamp && !isNaN(timestamp.getTime()) ? timestamp : null,

@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       name: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.STRING,
       },
       defaultCallSign: {
