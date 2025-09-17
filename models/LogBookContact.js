@@ -1,5 +1,5 @@
 'use strict';
-const { Model } = require('sequelize');
+const { Model, Op } = require('sequelize');
 const { MODEL_NAMES } = require('../CONST');
 
 /**
@@ -19,6 +19,25 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       this.belongsTo(models[MODEL_NAMES.LOG_BOOK], { foreignKey: 'logBookId', as: 'logBook' });
       this.belongsTo(models[MODEL_NAMES.USER_PROFILE], { foreignKey: 'userId', as: 'user' });
+    }
+
+    static findContactsByUserId({userId, searchTerm = '', page = 1, pageSize = 10, sortBy = 'date', sortOrder = 'DESC'}) {
+      return this.findAll({
+        where: {
+          userId, 
+          ...(searchTerm ? {
+            [Op.or]: [
+              { myName: { [Op.iLike]: `%${searchTerm}%` } },
+              { theirName: { [Op.iLike]: `%${searchTerm}%` } },
+              { myCallSign: { [Op.iLike]: `%${searchTerm}%` } },
+              { theirCallSign: { [Op.iLike]: `%${searchTerm}%` } },
+            ]
+          } : {})
+        },
+        order: [[sortBy, sortOrder]],
+        limit: pageSize,
+        offset: (page - 1) * pageSize,
+      })
     }
   }
   LogBookContact.init({
