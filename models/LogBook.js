@@ -40,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     timestamp: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
     },
     myAntenna: {
       type: DataTypes.STRING,

@@ -24,7 +24,7 @@ module.exports = {
         type: Sequelize.JSONB,
       },
       timestamp: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE,
       },
       myAntenna: {
