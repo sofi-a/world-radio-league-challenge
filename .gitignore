@@ -59,5 +59,9 @@ typings/
 
 # next.js build output
 .next
+
 # macOS system files
 .DS_Store
+
+# Firebase service account key
+config/firebase-service-account.json
