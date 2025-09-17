@@ -72,7 +72,7 @@ For custom configurations, edit the appropriate `docker-compose.yml` file as nee
       ```bash
       npx sequelize-cli db:seed --seed <seeder-file-name>
       ```
-    - To undod all seeds:
+    - To undo all seeds:
       ```bash
       npm run undo:seed
       ```
