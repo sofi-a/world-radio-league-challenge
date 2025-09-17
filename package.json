@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "nodemon ./bin/www",
     "migrate": "sequelize-cli db:migrate",
-    "start": "node ./bin/www"
+    "seed": "sequelize-cli db:seed:all",
+    "start": "node ./bin/www",
+    "undo:migrate": "sequelize-cli db:migrate:undo:all",
+    "undo:seed": "sequelize-cli db:seed:undo:all"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
