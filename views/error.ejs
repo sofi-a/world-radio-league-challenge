@@ -1,3 +1,7 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<h1><%= error.status %>: <%= message %></h1>
+<% if (error.status === 400) { %>
+  <pre><%= JSON.stringify(error.errors, null, 2) %></pre>
+<% } %>
+<% if (process.env.NODE_ENV === 'development') { %>
+  <pre><%= error.stack %></pre>
+<% } %>

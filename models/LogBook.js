@@ -20,6 +20,10 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models[MODEL_NAMES.LOG_BOOK_CONTACT], { foreignKey: 'logBookId', as: 'contacts' });
       this.belongsTo(models[MODEL_NAMES.USER_PROFILE], { foreignKey: 'userId', as: 'user' });
     }
+
+    static findLogBooksByUserId(userId) {
+      return this.findAll({ where: { userId } });
+    }
   }
   LogBook.init({
     id: {
