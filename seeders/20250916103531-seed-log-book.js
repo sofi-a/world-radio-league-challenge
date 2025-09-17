@@ -26,7 +26,7 @@ function mapBatchToRows(batch) {
       myRadio: doc.myRadio || null,
       contactCount: doc.contactCount,
       lastContactTimestamp: doc.lastContactTimestamp ? new Date(doc.lastContactTimestamp._seconds * 1000) : null,
-      userId: doc.uid,
+      userId: doc.uid || null,
       createdAt,
       updatedAt,
     };
