@@ -22,7 +22,6 @@ router.get(
   async function(req, res, next) {
     try {
       const { searchTerm, page, pageSize, sortBy, sortOrder } = req.query;
-      console.log(pageSize)
       const userProfile = await db[MODEL_NAMES.USER_PROFILE].findByUserId(req.params.userId);
       if (!userProfile) {
         throw createError(httpStatus.NOT_FOUND, 'User not found');
