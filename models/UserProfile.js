@@ -20,6 +20,10 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models[MODEL_NAMES.LOG_BOOK], { foreignKey: 'userId', as: 'logBooks' });
       this.hasMany(models[MODEL_NAMES.LOG_BOOK_CONTACT], { foreignKey: 'userId', as: 'logBookContacts' });
     }
+
+    static findByUserId(userId) {
+      return this.findOne({ where: { id: userId } });
+    }
   }
   UserProfile.init({
     id: {
