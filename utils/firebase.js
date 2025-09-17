@@ -117,8 +117,7 @@ function startWorker(workerData) {
     worker.on('message', (msg) => {
       if (msg.type === 'error') {
         reject(new Error(msg.error));
-      }
-      if (msg.type === 'done') {
+      } else if (msg.type === 'done') {
         resolve(msg.data);
       }
     });
