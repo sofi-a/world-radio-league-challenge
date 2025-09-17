@@ -124,7 +124,7 @@ module.exports = {
           type: Sequelize.STRING,
         },
         userId: {
-          allowNull: false,
+          allowNull: true,
           type: Sequelize.STRING,
         },
         logBookId: {

@@ -138,7 +138,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     userId: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     logBookId: {
       type: DataTypes.STRING,
