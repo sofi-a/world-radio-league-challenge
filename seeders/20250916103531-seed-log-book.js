@@ -21,7 +21,7 @@ function mapBatchToRows(batch) {
       defaultCallSign: doc.defaultCallSign || null,
       coordinates: doc.coordinates ? JSON.stringify(doc.coordinates) : null,
       timestamp: doc.timestamp ? new Date(doc.timestamp._seconds * 1000) : null,
-      myAntenna: doc.myAntenn || null,
+      myAntenna: doc.myAntenna || null,
       myRadio: doc.myRadio || null,
       contactCount: doc.contactCount,
       lastContactTimestamp: doc.lastContactTimestamp ? new Date(doc.lastContactTimestamp._seconds * 1000) : null,
