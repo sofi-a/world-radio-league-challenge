@@ -2,6 +2,12 @@
 const { Model } = require('sequelize');
 const { MODEL_NAMES } = require('../CONST');
 
+/**
+ * 
+ * @param {import('sequelize').Sequelize} sequelize 
+ * @param {import('sequelize').DataTypes} DataTypes 
+ * @returns {import('sequelize').Model}
+ */
 module.exports = (sequelize, DataTypes) => {
   class LogBook extends Model {
     /**
