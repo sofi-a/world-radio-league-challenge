@@ -124,6 +124,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
+    userId: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    logBookId: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   }, {
     sequelize,
     modelName: MODEL_NAMES.LOG_BOOK_CONTACT,

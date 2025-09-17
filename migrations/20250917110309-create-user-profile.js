@@ -1,8 +1,11 @@
 'use strict';
+
+const { MODEL_NAMES, TABLE_NAMES } = require('../CONST');
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('UserProfiles', {
+    await queryInterface.createTable(TABLE_NAMES[MODEL_NAMES.USER_PROFILE], {
       id: {
         allowNull: false,
         primaryKey: true,
@@ -68,6 +71,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('UserProfiles');
+    await queryInterface.dropTable(TABLE_NAMES[MODEL_NAMES.USER_PROFILE]);
   }
 };
