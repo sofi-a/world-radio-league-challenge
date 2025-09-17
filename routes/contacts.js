@@ -7,7 +7,7 @@ const { MODEL_NAMES, REQUEST_PAYLOAD_LOCATION } = require('../CONST');
 
 const router = express.Router();
 
-/* GET logbooks listing. */
+/* GET contacts listing. */
 router.get(
   '/:userId',
   [
