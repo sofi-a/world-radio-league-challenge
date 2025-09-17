@@ -64,16 +64,10 @@ module.exports = {
         myProfilePic: {
           allowNull: true,
           type: Sequelize.STRING(2048),
-          validate: {
-            isUrl: true,
-          },
         },
         theirProfilePic: {
           allowNull: true,
           type: Sequelize.STRING(2048),
-          validate: {
-            isUrl: true,
-          },
         },
         myCallSign: {
           allowNull: true,

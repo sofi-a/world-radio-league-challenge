@@ -26,9 +26,6 @@ module.exports = {
       profilePic: {
         allowNull: true,
         type: Sequelize.STRING(2048),
-        validate: {
-          isUrl: true,
-        },
       },
       callSign: {
         allowNull: true,
