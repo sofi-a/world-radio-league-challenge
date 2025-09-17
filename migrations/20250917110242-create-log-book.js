@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       name: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.STRING,
       },
       defaultCallSign: {
@@ -24,7 +24,7 @@ module.exports = {
         type: Sequelize.JSONB,
       },
       timestamp: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE,
       },
       myAntenna: {
@@ -45,7 +45,7 @@ module.exports = {
         type: Sequelize.DATE,
       },
       userId: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.STRING,
       },
       createdAt: {

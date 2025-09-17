@@ -63,11 +63,11 @@ module.exports = {
         },
         myProfilePic: {
           allowNull: true,
-          type: Sequelize.STRING,
+          type: Sequelize.STRING(2048),
         },
         theirProfilePic: {
           allowNull: true,
-          type: Sequelize.STRING,
+          type: Sequelize.STRING(2048),
         },
         myCallSign: {
           allowNull: true,
@@ -118,7 +118,7 @@ module.exports = {
           type: Sequelize.STRING,
         },
         userId: {
-          allowNull: false,
+          allowNull: true,
           type: Sequelize.STRING,
         },
         logBookId: {

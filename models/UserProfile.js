@@ -2,6 +2,12 @@
 const { Model } = require('sequelize');
 const { MODEL_NAMES } = require('../CONST');
 
+/**
+ * 
+ * @param {import('sequelize').Sequelize} sequelize 
+ * @param {import('sequelize').DataTypes} DataTypes 
+ * @returns {import('sequelize').Model}
+ */
 module.exports = (sequelize, DataTypes) => {
   class UserProfile extends Model {
     /**
@@ -22,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     firstName: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     lastName: {
       type: DataTypes.STRING,
@@ -33,8 +39,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
     },
     profilePic: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(2048),
       allowNull: true,
+      validate: {
+        isUrl: true,
+      },
     },
     callSign: {
       type: DataTypes.STRING,

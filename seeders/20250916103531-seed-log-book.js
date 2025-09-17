@@ -15,17 +15,18 @@ function mapBatchToRows(batch) {
   return batch.map((doc) => {
     const createdAt = new Date(doc.createTime._seconds * 1000);
     const updatedAt = new Date(doc.updateTime._seconds * 1000);
+    const timestamp = doc.timestamp ? new Date(doc.timestamp._seconds * 1000) : null;
     return {
       id: doc.id,
-      name: doc.name,
+      name: doc.name || null,
       defaultCallSign: doc.defaultCallSign || null,
       coordinates: doc.coordinates ? JSON.stringify(doc.coordinates) : null,
-      timestamp: doc.timestamp ? new Date(doc.timestamp._seconds * 1000) : null,
+      timestamp: timestamp && !isNaN(timestamp.getTime()) ? timestamp : null,
       myAntenna: doc.myAntenna || null,
       myRadio: doc.myRadio || null,
       contactCount: doc.contactCount,
       lastContactTimestamp: doc.lastContactTimestamp ? new Date(doc.lastContactTimestamp._seconds * 1000) : null,
-      userId: doc.uid,
+      userId: doc.uid || null,
       createdAt,
       updatedAt,
     };

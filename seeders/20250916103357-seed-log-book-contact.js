@@ -44,7 +44,7 @@ function mapBatchToRows(batch) {
       theirState: doc.theirState || null,
       myAntenna: doc.myAntenna || null,
       myRadio: doc.myRadio || null,
-      userId: doc.uid,
+      userId: doc.uid || null,
       logBookId: doc.logBookId || null,
       createdAt,
       updatedAt,

@@ -2,6 +2,12 @@
 const { Model } = require('sequelize');
 const { MODEL_NAMES } = require('../CONST');
 
+/**
+ * 
+ * @param {import('sequelize').Sequelize} sequelize 
+ * @param {import('sequelize').DataTypes} DataTypes 
+ * @returns {import('sequelize').Model}
+ */
 module.exports = (sequelize, DataTypes) => {
   class LogBookContact extends Model {
     /**
@@ -69,12 +75,18 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
     },
     myProfilePic: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(2048),
       allowNull: true,
+      validate: {
+        isUrl: true,
+      },
     },
     theirProfilePic: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(2048),
       allowNull: true,
+      validate: {
+        isUrl: true,
+      },
     },
     myCallSign: {
       type: DataTypes.STRING,
@@ -126,7 +138,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     userId: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     logBookId: {
       type: DataTypes.STRING,

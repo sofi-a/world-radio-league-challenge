@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       firstName: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.STRING,
       },
       lastName: {
@@ -25,7 +25,7 @@ module.exports = {
       },
       profilePic: {
         allowNull: true,
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(2048),
       },
       callSign: {
         allowNull: true,

@@ -2,6 +2,12 @@
 const { Model } = require('sequelize');
 const { MODEL_NAMES } = require('../CONST');
 
+/**
+ * 
+ * @param {import('sequelize').Sequelize} sequelize 
+ * @param {import('sequelize').DataTypes} DataTypes 
+ * @returns {import('sequelize').Model}
+ */
 module.exports = (sequelize, DataTypes) => {
   class LogBook extends Model {
     /**
@@ -22,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     defaultCallSign: {
       type: DataTypes.STRING,
@@ -34,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     timestamp: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
     },
     myAntenna: {
       type: DataTypes.STRING,
@@ -55,7 +61,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     userId: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
   }, {
     sequelize,
