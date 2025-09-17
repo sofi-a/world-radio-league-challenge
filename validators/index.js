@@ -6,7 +6,7 @@ const { FIRESTORE_ID_REGEXP, REQUEST_PAYLOAD_LOCATION, UUID_REGEXP } = require('
 const searchTerm = param('searchTerm').optional().isString().isLength({ min: 1, max: 255 });
 const page = query('page').optional().isInt({ min: 1 }).toInt();
 const pageSize = query('pageSize').optional().isInt({ min: 1, max: 100 }).toInt();
-const sortBy = query('sortBy').optional().isIn(['date', 'theirName', 'myCallSign', 'theirCallSign', "rstSent", "rstReceived"]);
+const sortBy = query('sortBy').optional().isIn(['date', 'theirName', 'myCallSign', 'theirCallSign', 'rstSent', 'rstReceived']);
 const sortOrder = query('sortOrder').optional().isIn(['ASC', 'DESC']);
 
 function getValidator(location) {
