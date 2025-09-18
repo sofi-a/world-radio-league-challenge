@@ -21,23 +21,32 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models[MODEL_NAMES.USER_PROFILE], { foreignKey: 'userId', as: 'user' });
     }
 
-    static findContactsByUserId({userId, searchTerm = '', page = 1, pageSize = 10, sortBy = 'date', sortOrder = 'DESC'}) {
-      return this.findAll({
+    static findContacts({
+      userId,
+      searchTerm = '',
+      page = 1,
+      pageSize = 10,
+      sortBy = 'date',
+      sortOrder = 'DESC',
+    }) {
+      return this.findAndCountAll({
         where: {
-          userId, 
-          ...(searchTerm ? {
-            [Op.or]: [
-              { myName: { [Op.iLike]: `%${searchTerm}%` } },
-              { theirName: { [Op.iLike]: `%${searchTerm}%` } },
-              { myCallSign: { [Op.iLike]: `%${searchTerm}%` } },
-              { theirCallSign: { [Op.iLike]: `%${searchTerm}%` } },
-            ]
-          } : {})
+          ...(userId ? { userId } : {}),
+          ...(searchTerm
+            ? {
+                [Op.or]: [
+                  { myName: { [Op.iLike]: `%${searchTerm}%` } },
+                  { theirName: { [Op.iLike]: `%${searchTerm}%` } },
+                  { myCallSign: { [Op.iLike]: `%${searchTerm}%` } },
+                  { theirCallSign: { [Op.iLike]: `%${searchTerm}%` } },
+                ],
+              }
+            : {}),
         },
         order: [[sortBy, sortOrder]],
         limit: pageSize,
         offset: (page - 1) * pageSize,
-      })
+      });
     }
   }
   LogBookContact.init({
