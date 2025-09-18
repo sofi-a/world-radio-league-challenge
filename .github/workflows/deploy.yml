@@ -12,6 +12,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Copy files via SCP to remote server
+        uses: appleboy/scp-action@v1.0.3
+        with:
+          host: ${{ secrets.DO_HOST }} 
+          username: ${{ secrets.DO_USER }}
+          key: ${{ secrets.DO_SSH_KEY }}
+          port: ${{ secrets.DO_PORT }}
+          source: "./"
+          target: ${{ secrets.DO_TARGET_PATH }}
+
       - name: Deploy via SSH and run deployment script
         uses: appleboy/ssh-action@v0.1.10
         with:
