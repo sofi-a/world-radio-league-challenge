@@ -7,7 +7,7 @@ const FlagCell = ({ country }) => {
   }
   return (
     <img
-      src={code ? `https://flagcdn.com/24x18/${code}.png` : ''}
+      src={`https://flagcdn.com/24x18/${code}.png`}
       alt={country}
       title={country}
       style={{
