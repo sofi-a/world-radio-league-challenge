@@ -4,6 +4,7 @@ module.exports = {
   entry: './src/index.jsx',
   output: {
     path: path.resolve(__dirname, 'public/javascripts'),
+    filename: 'main.js',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
