@@ -21,8 +21,8 @@ jobs:
           port: ${{ secrets.DO_PORT }}
           script: |
             cd ${{ secrets.DO_TARGET_PATH }}
-            echo "NODE_ENV=${{ variables.NODE_ENV }}" > .env
-            echo "PORT=${{ variables.PORT }}" >> .env
+            echo "NODE_ENV=${{ vars.NODE_ENV }}" > .env
+            echo "PORT=${{ vars.PORT }}" >> .env
             echo "POSTGRES_HOST=${{ secrets.POSTGRES_HOST }}" >> .env
             echo "POSTGRES_USER=${{ secrets.POSTGRES_USER }}" >> .env
             echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> .env
