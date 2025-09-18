@@ -65,3 +65,6 @@ typings/
 
 # Firebase service account key
 config/firebase-service-account.json
+
+# Ignore webpack build output
+public/javascripts/main.js

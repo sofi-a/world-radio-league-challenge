@@ -34,11 +34,6 @@ For custom configurations, edit the appropriate `docker-compose.yml` file as nee
     - Click "Generate new private key" and download the JSON file.
     - Save this file as `firebase-service-account.json` in the `config` directory of your project.
 
-3. **Install Firebase Admin SDK**
-    ```bash
-    npm install firebase-admin
-    ```
-
 ---
 
 ## Running Sequelize Migration and Seeder Scripts
