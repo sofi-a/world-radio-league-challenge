@@ -163,11 +163,6 @@ const App = () => {
     fetchContacts({ page: newIndex + 1, sorting, globalFilter });
   };
 
-  // Reset page index when filter or sorting changes
-  useEffect(() => {
-    setPageIndex(0);
-  }, [globalFilter, sorting]);
-
   return (
     <div style={styles.container}>
       <h1 style={styles.title}>Most Recent Contacts</h1>
