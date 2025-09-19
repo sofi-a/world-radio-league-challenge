@@ -2,6 +2,9 @@
   "name": "world-radio-league-challenge",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "build:dev": "webpack --mode development",
     "build:prod": "webpack --mode production",
