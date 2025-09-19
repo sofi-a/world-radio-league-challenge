@@ -32,25 +32,25 @@ jobs:
           port: ${{ secrets.DO_PORT }}
           script: |
             cd ${{ secrets.DO_TARGET_PATH }}
-            echo "NODE_ENV=${{ env.NODE_ENV }}" > .env
-            echo "PORT=${{ env.PORT }}" >> .env
-            echo "POSTGRES_HOST=${{ env.POSTGRES_HOST }}" >> .env
-            echo "POSTGRES_USER=${{ env.POSTGRES_USER }}" >> .env
-            echo "POSTGRES_PASSWORD=${{ env.POSTGRES_PASSWORD }}" >> .env
-            echo "POSTGRES_DB=${{ env.POSTGRES_DB }}" >> .env
+            echo "NODE_ENV=${{ vars.NODE_ENV }}" > .env
+            echo "PORT=${{ vars.PORT }}" >> .env
+            echo "POSTGRES_HOST=${{ secrets.POSTGRES_HOST }}" >> .env
+            echo "POSTGRES_USER=${{ secrets.POSTGRES_USER }}" >> .env
+            echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> .env
+            echo "POSTGRES_DB=${{ secrets.POSTGRES_DB }}" >> .env
             cat <<EOF > config/firebase-service-account.json
             {
-              "type": "${{ env.FIREBASE_TYPE }}",
-              "project_id": "${{ env.FIREBASE_PROJECT_ID }}",
-              "private_key_id": "${{ env.FIREBASE_PRIVATE_KEY_ID }}",
-              "private_key": "${{ env.FIREBASE_PRIVATE_KEY }}",
-              "client_email": "${{ env.FIREBASE_CLIENT_EMAIL }}",
-              "client_id": "${{ env.FIREBASE_CLIENT_ID }}",
-              "auth_uri": "${{ env.FIREBASE_AUTH_URI }}",
-              "token_uri": "${{ env.FIREBASE_TOKEN_URI }}",
-              "auth_provider_x509_cert_url": "${{ env.FIREBASE_AUTH_PROVIDER_X509_CERT_URL }}",
-              "client_x509_cert_url": "${{ env.FIREBASE_CLIENT_X509_CERT_URL }}",
-              "universe_domain": "${{ env.FIREBASE_UNIVERSE_DOMAIN }}"
+              "type": "${{ secrets.FIREBASE_TYPE }}",
+              "project_id": "${{ secrets.FIREBASE_PROJECT_ID }}",
+              "private_key_id": "${{ secrets.FIREBASE_PRIVATE_KEY_ID }}",
+              "private_key": "${{ secrets.FIREBASE_PRIVATE_KEY }}",
+              "client_email": "${{ secrets.FIREBASE_CLIENT_EMAIL }}",
+              "client_id": "${{ secrets.FIREBASE_CLIENT_ID }}",
+              "auth_uri": "${{ secrets.FIREBASE_AUTH_URI }}",
+              "token_uri": "${{ secrets.FIREBASE_TOKEN_URI }}",
+              "auth_provider_x509_cert_url": "${{ secrets.FIREBASE_AUTH_PROVIDER_X509_CERT_URL }}",
+              "client_x509_cert_url": "${{ secrets.FIREBASE_CLIENT_X509_CERT_URL }}",
+              "universe_domain": "${{ secrets.FIREBASE_UNIVERSE_DOMAIN }}"
             }
             EOF
             docker compose -f docker-compose-prod.yml --env-file .env up --build -d
