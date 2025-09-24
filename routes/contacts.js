@@ -22,7 +22,7 @@ router.get(
   '/',
   getContactsValidators,
   validateRequest,
-  async function(req, res, next) {
+  async function (req, res, next) {
     try {
       const { searchTerm, page, pageSize, sortBy, sortOrder } = req.query;
       const { count: total, rows: contacts } = await db[
@@ -45,7 +45,7 @@ router.get(
   '/:userId',
   getContactsValidators.concat(id(REQUEST_PAYLOAD_LOCATION.PARAMS, 'userId')),
   validateRequest,
-  async function(req, res, next) {
+  async function (req, res, next) {
     try {
       const { searchTerm, page, pageSize, sortBy, sortOrder } = req.query;
       const userProfile = await db[MODEL_NAMES.USER_PROFILE].findByUserId(

@@ -37,7 +37,8 @@ function mapBatchToRows(batch) {
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  // eslint-disable-next-line no-unused-vars
+  async up(queryInterface, Sequelize) {
     const snapshot = await firestore.collection(COLLECTION_NAME).count().get();
     const limit = Math.min(snapshot.data().count, LIMIT);
     const batchIterator = fetchBatches({
@@ -50,15 +51,18 @@ module.exports = {
       if (done || !batch || batch.length === 0) break;
 
       try {
-        await db[COLLECTION_NAME].bulkCreate(mapBatchToRows(batch), { ignoreDuplicates: true });
+        await db[COLLECTION_NAME].bulkCreate(mapBatchToRows(batch), {
+          ignoreDuplicates: true,
+        });
       } catch (error) {
         console.error('Error inserting batch:', error.message);
-        throw error; 
+        throw error;
       }
     }
   },
 
-  async down (queryInterface, Sequelize) {
+  // eslint-disable-next-line no-unused-vars
+  async down(queryInterface, Sequelize) {
     await queryInterface.bulkDelete(TABLE_NAMES[COLLECTION_NAME], null, {});
-  }
+  },
 };

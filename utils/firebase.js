@@ -9,7 +9,7 @@ const concurrency = Math.min(os.cpus().length, 4);
 try {
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    databaseURL: `https://${serviceAccount.project_id}.firebaseio.com`
+    databaseURL: `https://${serviceAccount.project_id}.firebaseio.com`,
   });
 } catch (error) {
   if (!/already exists/u.test(error.message)) {
@@ -25,7 +25,7 @@ function getFirestoreInstance() {
 
 /**
  * Fetches batches of documents from a Firestore collection using worker threads concurrently.
- * 
+ *
  * @generator
  * @param {Object} options - Options for fetching batches.
  * @param {string} options.collectionName - Name of the Firestore collection.
@@ -88,7 +88,7 @@ async function* fetchBatches(options) {
 
 /**
  * Starts a worker thread to process Firebase-related tasks asynchronously.
- * 
+ *
  * @param {Object} workerData - Options to pass to the worker thread.
  * @param {string} workerData.collectionName - Name of the Firestore collection to process.
  * @param {number} workerData.batchSize - Number of documents to process in each batch.

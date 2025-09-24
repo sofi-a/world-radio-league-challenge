@@ -10,7 +10,11 @@ function isValidDate(date) {
   if (!dateRegex.test(date)) return false;
   const [year, month, day] = date.split('-').map(Number);
   const dt = new Date(year, month - 1, day);
-  return dt.getFullYear() === year && dt.getMonth() === month - 1 && dt.getDate() === day;
+  return (
+    dt.getFullYear() === year &&
+    dt.getMonth() === month - 1 &&
+    dt.getDate() === day
+  );
 }
 
 module.exports = {
