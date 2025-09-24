@@ -1,11 +1,27 @@
 const createError = require('http-errors');
 const { status: httpStatus } = require('http-status');
-const { body, query, param, oneOf, validationResult } = require('express-validator');
-const { FIRESTORE_ID_REGEXP, REQUEST_PAYLOAD_LOCATION, UUID_REGEXP } = require('../CONST');
+const {
+  body,
+  query,
+  param,
+  oneOf,
+  validationResult,
+} = require('express-validator');
+const {
+  FIRESTORE_ID_REGEXP,
+  REQUEST_PAYLOAD_LOCATION,
+  UUID_REGEXP,
+} = require('../CONST');
 
-const searchTerm = param('searchTerm').optional().isString().isLength({ min: 1, max: 255 });
+const searchTerm = param('searchTerm')
+  .optional()
+  .isString()
+  .isLength({ min: 1, max: 255 });
 const page = query('page').optional().isInt({ min: 1 }).toInt();
-const pageSize = query('pageSize').optional().isInt({ min: 1, max: 100 }).toInt();
+const pageSize = query('pageSize')
+  .optional()
+  .isInt({ min: 1, max: 100 })
+  .toInt();
 const sortBy = query('sortBy')
   .optional()
   .isIn([
@@ -40,7 +56,7 @@ function id(location = 'params', field = 'id') {
   const validator = getValidator(location);
   return oneOf([
     validator(field).matches(FIRESTORE_ID_REGEXP),
-    validator(field).matches(UUID_REGEXP)
+    validator(field).matches(UUID_REGEXP),
   ]);
 }
 
@@ -59,5 +75,5 @@ module.exports = {
   sortBy,
   sortOrder,
   id,
-  validateRequest
-}
+  validateRequest,
+};

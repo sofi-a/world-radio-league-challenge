@@ -18,8 +18,12 @@ function mapBatchToRows(batch) {
     const updatedAt = new Date(doc.updateTime._seconds * 1000);
     return {
       id: doc.id,
-      date: isValidDate(doc.date) ? doc.date : createdAt.toISOString().substring(0, 10),
-      time: isValidTime(doc.time) ? doc.time : createdAt.toTimeString().split(' ')[0],
+      date: isValidDate(doc.date)
+        ? doc.date
+        : createdAt.toISOString().substring(0, 10),
+      time: isValidTime(doc.time)
+        ? doc.time
+        : createdAt.toTimeString().split(' ')[0],
       frequency: doc.frequency ? parseFloat(doc.frequency) : null,
       mode: doc.userMode || '',
       band: doc.band || '',
@@ -34,8 +38,12 @@ function mapBatchToRows(batch) {
       theirProfilePic: doc.theirProfilePic || null,
       myCallSign: doc.myCallSign || null,
       theirCallSign: doc.theirCallsign || null,
-      myCoordinates: doc.myCoordinates ? JSON.stringify(doc.myCoordinates) : null,
-      theirCoordinates: doc.theirCoordinates ? JSON.stringify(doc.theirCoordinates) : null,
+      myCoordinates: doc.myCoordinates
+        ? JSON.stringify(doc.myCoordinates)
+        : null,
+      theirCoordinates: doc.theirCoordinates
+        ? JSON.stringify(doc.theirCoordinates)
+        : null,
       myCountry: doc.myCountry || null,
       theirCountry: doc.theirCountry || null,
       myCity: doc.myCity || null,
@@ -54,7 +62,8 @@ function mapBatchToRows(batch) {
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  // eslint-disable-next-line no-unused-vars
+  async up(queryInterface, Sequelize) {
     const snapshot = await firestore.collection(COLLECTION_NAME).count().get();
     const limit = Math.min(snapshot.data().count, LIMIT);
     const orderBy = 'contactTimeStamp';
@@ -71,15 +80,18 @@ module.exports = {
       if (done || !batch || batch.length === 0) break;
 
       try {
-        await db[COLLECTION_NAME].bulkCreate(mapBatchToRows(batch), { ignoreDuplicates: true });
+        await db[COLLECTION_NAME].bulkCreate(mapBatchToRows(batch), {
+          ignoreDuplicates: true,
+        });
       } catch (error) {
         console.error('Error inserting batch:', error.message);
-        throw error; 
+        throw error;
       }
     }
   },
 
-  async down (queryInterface, Sequelize) {
+  // eslint-disable-next-line no-unused-vars
+  async down(queryInterface, Sequelize) {
     await queryInterface.bulkDelete(TABLE_NAMES[COLLECTION_NAME], null, {});
-  }
+  },
 };

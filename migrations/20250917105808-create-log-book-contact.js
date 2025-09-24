@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 const { MODEL_NAMES, TABLE_NAMES } = require('../CONST');
 
@@ -136,6 +136,7 @@ module.exports = {
       }
     );
   },
+  // eslint-disable-next-line no-unused-vars
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable(TABLE_NAMES[MODEL_NAMES.LOG_BOOK_CONTACT]);
   },

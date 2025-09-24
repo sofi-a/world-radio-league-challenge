@@ -8,9 +8,11 @@ const { MODEL_NAMES } = require('../CONST');
 const router = express.Router();
 
 /* GET users listing. */
-router.get('/:id', id(), validateRequest, async function(req, res, next) {
+router.get('/:id', id(), validateRequest, async function (req, res, next) {
   try {
-    const userProfile = await db[MODEL_NAMES.USER_PROFILE].findByUserId(req.params.id);
+    const userProfile = await db[MODEL_NAMES.USER_PROFILE].findByUserId(
+      req.params.id
+    );
     if (!userProfile) {
       throw createError(httpStatus.NOT_FOUND, 'User not found');
     }
